@@ -1,3 +1,10 @@
 module.exports = {
-  publicPath: "/flibusta/",
+  // publicPath: "/flibusta/",
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/assets/styles/styles.scss";`,
+      },
+    },
+  },
 };
