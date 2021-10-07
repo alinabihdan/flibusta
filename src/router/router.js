@@ -8,7 +8,7 @@ Vue.use(Router);
 let router = new Router({
   routes: [
     {
-      path: "/",
+      path: "/flibusta",
       name: "bookSearch",
       component: BookSearch,
     },
