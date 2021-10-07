@@ -1,5 +1,5 @@
 module.exports = {
-  // publicPath: "/flibusta/",
+  publicPath: "/flibusta/",
   css: {
     loaderOptions: {
       sass: {
