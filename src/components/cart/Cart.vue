@@ -17,8 +17,8 @@
             @decrement="decrement(index)"
         />
 
-        <p>Total price: {{cartTotalCost}} UAH</p>
-        <button v-if="this.cart_data.length" @click="submitBooksOrder">Place your order</button>
+        <p class="total-price">Total price: {{cartTotalCost}} UAH</p>
+        <button v-if="this.cart_data.length" @click="submitBooksOrder" class="submit-btn">Place your order</button>
 
     </div>
 </template>
@@ -67,12 +67,11 @@ export default {
                 if (e.preventDefault) e.preventDefault();
             }
         },
-        submitCartForm() {
-            this.$router.push( {name: 'catalog'});
-            this.CLEAR_CART_AFTER_SUBMIT();
-        },
         submitBooksOrder() {
             this.$router.push( {name: 'bookSearch'});
+            this.$toast.success(`Your order for the amount of ${this.cartTotalCost} UAH has been successfully completed`, {
+                timeout: 15000
+            });
             this.CLEAR_CART_AFTER_SUBMIT();
         }
     },
@@ -102,5 +101,22 @@ export default {
         max-width: 900px;
         margin: 0 auto;
         text-align: center;
+    }
+    .total-price {
+        margin: 30px 0;
+        color: #446699;
+        font-weight: 500;
+    }
+
+    .submit-btn {
+        text-shadow: 0 -1px 0 rgb(0 0 0 / 30%);
+            background-color: #f87a00;
+            background-image: linear-gradient(to bottom, #ff9300, #ed5500);
+            background-repeat: repeat-x;
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            padding: 8px;
+            margin-bottom: 30px;
     }
 </style>

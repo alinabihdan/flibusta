@@ -12,9 +12,9 @@
       <div class="query">
         <h1 class="title">Flibusta - simple book search</h1>
 
-        <form @submit.prevent="search(searchQuery)" id="query">
-          <input type="text" v-model.trim="searchQuery" placeholder="⌕" class="input" required>
-          <button @click="search(searchQuery)" class="btn">
+        <form @submit.prevent="search(searchQuery)" class="query-form">
+          <input type="text" v-model.trim="searchQuery" placeholder="Search..." class="query-input" required>
+          <button @click="search(searchQuery)" class="btn-search">
              <i class="material-icons">search</i>
           </button>
         </form>
@@ -54,6 +54,12 @@ export default {
         'GET_BOOKS_FROM_API',
       ]),
       search(searchQuery) {
+        if(this.searchQuery == '') {
+          this.$toast.warning("Ooops, try another search query", {
+            timeout: 3000
+          });
+          return
+        }
         this.GET_SEARCH_QUERY_TO_VUEX(searchQuery);
         this.GET_BOOKS_FROM_API(searchQuery);
         setTimeout(() => {
@@ -69,11 +75,35 @@ export default {
 <style lang="scss">
   .link_to_cart {
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 20px;
     display: flex;
     align-items: center;
-
+    color: #2c3e50;
   }
+
+  .query-form {
+    display: flex;
+    align-items: center;
+  }
+
+  .query-input::placeholder {
+    font-size: 18px;
+  }
+
+  .btn-search {
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 30%);
+    background-color: #f87a00;
+    background-image: linear-gradient(to bottom, #ff9300, #ed5500);
+    background-repeat: repeat-x;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
     
 </style>

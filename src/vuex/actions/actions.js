@@ -6,7 +6,7 @@ export default {
   },
   GET_BOOKS_FROM_API({ commit }, searchQuery) {
     return axios(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${searchQuery}&filter=paid-ebooks&maxResults=30`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${searchQuery}&filter=paid-ebooks&maxResults=40`
     )
       .then((books) => {
         commit("SET_BOOKS_TO_STATE", books.data.items);

@@ -34,11 +34,13 @@ export default {
 
 <style lang = "scss">
     .book-list {
+      padding-top: 30px;
         display: flex;
         flex-wrap: wrap;
        justify-content: center;
         align-items: stretch;
         margin: -10px;
+        background: #e6e6e6;
     }
 
 </style>

@@ -12,7 +12,7 @@
             >
         </template>
         <!-- description -->
-        <div class="v-cart-item__info">
+        <div class="cart-item__info">
             <p>{{cart_item_data.volumeInfo.title}}</p>
         </div>
         <!-- price -->
@@ -78,12 +78,16 @@ export default {
         align-items: center;
         box-shadow: 0 0 8px 0 #e0e0e0;
         padding: 16px;
-        margin-bottom: 30px;
+        border-bottom: 1px solid #afb1b8;
         &__image {
         max-width: 100px;
         }
         &__info {
         flex-basis: 25%;
+        color: #446699;
+        font-weight: 500;
+        font-style: italic;
+
         }
         &__quantity {
             display: flex;
@@ -92,6 +96,7 @@ export default {
                 margin-left: 16px;
             }
         }
+        .btn,
         .crement {
             width: 26px;
             height: 26px;
@@ -100,7 +105,14 @@ export default {
             align-items: center;
             cursor: pointer;
             border-radius: 50%;
-            background: rgba(38, 174, 104, .6);
+            background: #f87a00;
+            background-image: linear-gradient(to bottom, #ff9300, #ed5500);
+            background-repeat: repeat-x;
+            color: #fff;
+        }
+        .btn {
+            border: 0;
+            padding: 4px;
         }
     }
    

@@ -12,13 +12,13 @@
 
             <div class="popup__content">
                 <template v-if="popup_data.volumeInfo.imageLinks">
-                    <img :src="popup_data.volumeInfo.imageLinks.thumbnail" :alt="popup_data.volumeInfo.title" height="150">
+                    <img :src="popup_data.volumeInfo.imageLinks.thumbnail" :alt="popup_data.volumeInfo.title" height="200">
                 </template>
                 <template v-else>
                     <img
                     src="https://upittpress.org/wp-content/themes/pittspress/images/no_cover_available.png"
                     :alt="popup_data.volumeInfo.title"
-                    width="128"
+                    height="200"
                     >
                 </template>
 
@@ -29,15 +29,15 @@
                 <p v-if="errors.length" class="popup__form-errors">
                     <b>Please correct your mistakes:</b>
                     <ol>
-                    <li v-for="(error, index) in errors" :key="index + error" > {{ error }}</li>
+                    <li v-for="(error, index) in errors" :key="index + error" class="errors-item"> {{ error }} </li>
                     </ol>
                 </p>
-                <label>Name:</label>
-                <input v-model="name" type="text">
-                <label>Email:</label>
-                <input v-model="email" type="email">
-                <label>Phone:</label>
-                <input v-model="phone" type="tel">
+                <label class="popup__label">Name:</label>
+                <input v-model="name" type="text" class="popup__input">
+                <label class="popup__label">Email:</label>
+                <input v-model="email" type="email" class="popup__input">
+                <label class="popup__label">Phone:</label>
+                <input v-model="phone" type="tel" class="popup__input">
            
                 <button class="submit-btn" @click="checkForm">
                     Add to cart
@@ -72,17 +72,7 @@ export default {
         },
         checkForm() {
             this.errors = [];
-            // if (!this.name) {
-            //     this.errors.push('Name is required.');
-            // } else if(this.name.length < 2) {
-            //     this.errors.push('Name should contains at least 2 charaсters')
-            // } else if (!this.email) {
-            //     this.errors.push('Email is required.');
-            // } else if (!this.validEmail(this.email)) {
-            //     this.errors.push('Email isn`t correct.');
-            // } else if(!this.errors.length) {
-            //     this.$emit('addToCart') 
-            // }
+
             if(!this.name || this.name.length<2) this.errors.push("Name required or should contains more than 2 chars.");
             if(!this.email) {
                 this.errors.push("Email required.");
@@ -141,15 +131,15 @@ export default {
 
 
         &__title {
-            font-size: 16px;
+            color: #446699;
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 20px;
         }
 
-        &__content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        &__description {
+            margin: 10px 0;
+            font-size: 12px;
         }
         &__icon {
             position: absolute;
@@ -169,6 +159,29 @@ export default {
         }
         &__form-errors {
             color: red;
+        }
+        .popup__input {
+            min-width: 200px;
+            border-color: #446699;
+            border-radius: 2px;
+
+        }
+        .popup__label {
+            color: #446699;
+            font-weight: 500;
+        }
+        .errors-item {
+            text-align: left;
+        }
+        .submit-btn {
+            text-shadow: 0 -1px 0 rgb(0 0 0 / 30%);
+            background-color: #f87a00;
+            background-image: linear-gradient(to bottom, #ff9300, #ed5500);
+            background-repeat: repeat-x;
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            padding: 8px;
         }
     }
   

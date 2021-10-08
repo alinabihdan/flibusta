@@ -11,6 +11,7 @@ let router = new Router({
       path: "/",
       name: "bookSearch",
       component: BookSearch,
+      props: true,
     },
     {
       path: "/cart",
