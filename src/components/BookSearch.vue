@@ -12,9 +12,9 @@
       <div class="query">
         <h1 class="title">Flibusta - simple book search</h1>
 
-        <form @submit.prevent="search(searchQuery)" class="query-form">
+        <form @submit.prevent="search(searchQuery)" ref="form" class="query-form">
           <input type="text" v-model.trim="searchQuery" placeholder="Search..." class="query-input" required>
-          <button @click="search(searchQuery)" class="btn-search">
+          <button class="btn-search" type="submit">
              <i class="material-icons">search</i>
           </button>
         </form>
@@ -55,16 +55,15 @@ export default {
       ]),
       search(searchQuery) {
         if(this.searchQuery == '') {
-          this.$toast.warning("Ooops, try another search query", {
+          this.$toast.warning("Ooops, you need to type search query", {
             timeout: 3000
           });
           return
         }
-        this.GET_SEARCH_QUERY_TO_VUEX(searchQuery);
+
         this.GET_BOOKS_FROM_API(searchQuery);
-        setTimeout(() => {
-          this.searchQuery = ''
-        }, 500)
+        this.searchQuery = ''
+    
 
       }
   }

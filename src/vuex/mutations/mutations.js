@@ -1,11 +1,14 @@
 export default {
-  SET_SEARCH_QUERY_TO_VUEX: (state, value) => {
-    state.searchQuery = value;
-  },
   SET_BOOKS_TO_STATE: (state, books) => {
     state.books = books.filter(
       (book) => book.saleInfo.saleability === "FOR_SALE"
     );
+  },
+  LOAD_MORE_BOOKS_TO_STATE: (state, books) => {
+    const results = books.filter(
+      (book) => book.saleInfo.saleability === "FOR_SALE"
+    );
+    state.books.push(...results);
   },
   SET_CART: (state, book) => {
     if (state.cart.length) {

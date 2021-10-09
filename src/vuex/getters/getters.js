@@ -8,4 +8,7 @@ export default {
   CART(state) {
     return state.cart;
   },
+  isLoadMoreVisible(state) {
+    return state.isLoadMoreVisible;
+  },
 };

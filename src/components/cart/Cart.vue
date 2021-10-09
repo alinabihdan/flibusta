@@ -59,6 +59,9 @@ export default {
         },
         deleteFromCart(index) {
             this.DELETE_FROM_CART(index)
+            this.$toast.success('Deleted from cart', {
+                timeout: 2000
+            });
         },
         isNumber(e) {
             let regex = /[0-9]/

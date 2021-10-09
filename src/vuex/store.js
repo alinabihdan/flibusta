@@ -8,7 +8,10 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
   state: {
-    searchQuery: '',
+    searchQuery: "",
+    startIndex: 0,
+    totalItems: null,
+    isLoadMoreVisible: false,
     books: [],
     cart: [],
   },
